@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Comfortaa|Passion+One" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      //button for nav
+      var header = $('header'),
+        btn = $('button.toggle-nav');
+      //click button action
+      btn.on('click', function() {
+        header.toggleClass('active');
+      });
+      //mouse over gap, destroy and thes disappear
+      $('.gap').on('click', function() {
+        $('.destroy').fadeOut(1000);
+        $('.the').fadeOut(1000);
+        $('.be').animate({
+          //change size and color of 'be' as everything else fades away
+          fontSize: '2000%',
+          color: 'rgb(248, 27, 132)',
+        });
+        $('.gap').animate({
+          //make gap disappear and eliminate letter-spacing
+          opacity: 0,
+          transition: '3s',
+          letterSpacing: 0
+        });
+
+      });
+
+      //hover the header, add "not" in between the words
+      $('#p3').on('mouseover', function() {
+        $('#not').removeClass('hide');
+        $('#not').rotate()
+      });
+      //show all of the descriptions for the awesome ladies
+      $('#lady1').on('mouseover', function() {
+        $('#lady1text').removeClass('hide');
+      });
+      $('#lady2').on('mouseover', function() {
+        $('#lady2text').removeClass('hide');
+      });
+      $('#lady3').on('mouseover', function() {
+        $('#lady3text').removeClass('hide');
+      });
+
+      //cross out minority and add future
+      var minority = $('span#minority');
+      minority.on('mouseover', function() {
+        minority.css('text-decoration', 'line-through');
+        $('#future').fadeOut('slow', function() {
+          $(this).removeClass('hide');
+        });
+      });
+      //array with different colors
+      var change = $('#hover');
+      var colors = [
+        'rgb(248, 27, 132)',
+        'rgb(67, 192, 246)',
+        'rgb(50, 220, 200)'
+      ];
+      var current = 0;
+      //change the header color with class 'hover' every 2 seconds
+      function nextColor() {
+        change.css(
+          'color', colors[current = ++current % colors.length]
+        );
+        setTimeout(nextColor, 2000);
+      }
+      //repeat the process but return to first color
+      setTimeout(nextColor, 2000);
+      change.css('color', colors[0]);
+      setTimeout(nextColor, 2000);
+      change.css('color', colors[0]);
+      //array of words that change every second
+      var words = ['software developer', 'data scientist', 'web master',
+        'video game designer', 'database administrator', 'computer programmer', 'animator', 'cyber security strategist', 'ethical hacker',
+        'interaction designer', 'information architect', 'mobile app developer', 'ui/ux designer'
+      ];
+      var t = setInterval(function() {
+        var random = Math.round(Math.random() * (words.length - 1));
+        $('#changing').html(words[random]);
+      }, 1000);
+      //animated links
+      animateDiv('.a');
+      animateDiv('.b');
+      animateDiv('.c');
+
+      function makeNewPosition() {
+        // Get viewport dimensions (remove the dimension of the div)
+        var h = $(window).height() - 10;
+        var w = $(window).width() - 10;
+        var nh = Math.floor(Math.random() * h);
+        var nw = Math.floor(Math.random() * w);
+        return [nh, nw];
+      }
+
+      function animateDiv(myclass) {
+        var newq = makeNewPosition();
+        $(myclass).animate({
+          top: newq[0],
+          left: newq[1]
+        }, 5000, function() {
+          animateDiv(myclass);
+        });
+      };
+//working on the fancy slidein scroll effects
+
+
+
+
+
+    });
+  </script>
+
+
+  <title>DESTROYTHEGAP.ORG</title>
+</head>
+
+<body>
+  <!--  <header>
+  <button class="toggle-nav">
+      GO
+    </button>
+    <ul class="nav">
+      <li class="loud"><a href="#one">HOME</a></li>
+      <li class="loud"><a href="#two">LEARN</a></li>
+      <li class="loud"><a href="#three">INSPIRE</a></li>
+      <li class="loud"><a href="#four">DISCOVER</a></li>
+
+    </ul>
+  </header>
+-->
+  <!--random pieces that dont have positions-->
+  <div class="a">
+    <a style="color:var(--seafoam);" href="http://newsroom.ucla.edu/stories/cracking-the-code:-why-aren-t-more-women-majoring-in-computer-science" target="_blank"><i class="fas fa-bullhorn"></i></a>
+  </div>
+  <div class="b">
+    <a style="color:var(--magenta);" href="https://girlswhocode.com/" target="_blank"><i class="fas fa-comment"></i></a>
+  </div>
+  <div class="c">
+    <a style="color:var(--cyan);" href="https://www.computerscience.org/resources/women-in-computer-science/" target="_blank"><i class="far fa-paper-plane"></i></a>
+  </div>
+
+
+
+  <section id="one">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+
+        </div>
+
+        <div class="col-sm-8">
+          <h4>Click around!</h4>
+          <span class="destroy">DESTROY</span><span class="the"> THE</span><span class="gap"> GAP</span><br><span class="be"> BE
+          </span><span class="the"> THE</span><span class="change"> CHANGE</span><br><br><br>
+            <a href="#two" class="scroller"><i class="fas fa-arrow-circle-down"></i></a>
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section id="two">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2>WOMEN ARE THE <span id="minority">MINORITY</span><br> IN COMPUTING &nbsp &nbsp &nbsp <span id="future" class="hide">FUTURE</span></h2>
+          <p class="content">The statistics are astounding. Computing jobs are held by a large majority of males.
+            Why? Well, many people argue that <em>"girls just dont like to code"</em> or <em>"we aren't smart enough for that"</em>.
+            That doesn't sound quite right. It's time to think differently.
+            <br><br>
+            Women are born and raised to do certain things. It's a little thing called "nature vs. nurture".
+            Most young girls are told that they need to be a nurse or a teacher (which are most amazing, neccesary professions).
+            However, what happens when we try to break the mold? If us girls start asking for video games for Christmas we hear "those are for boys".
+            Why? Why does using hand-eye coordination and strategical skills have to be a boy thing?
+            <br><br>
+            The quick answer? It doesn't. Women are breaking boundaries everyday in fields like computer science, video-game design, and web development.
+            A huge reason why girls don't go into tech is because they don't have role models. Those times are changing. Women are becoming CEOs of big tech companies,
+            lead software engineers, and hopefully one day president. <strong>We can do anything!</strong><br><br><br>
+              <a href="#two" class="scroller"><i class="fas fa-arrow-circle-down"></i></a>
+          </p>
+
+
+        </div>
+        <div class="col-sm-4">
+          <p class="stat"><span id="percentsmall">18%</span> of computing jobs are held by women.</p>
+
+          <p class="stat"><span id="percentbig">78%</span> of young girls are interested in computing-based activities.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section id="three">
+    <div class="container">
+      <div class="row">
+        <h2 id="hover">HOVER TO DISCOVER</h2>
+        <div class="col-sm-4">
+
+          <img src="MM.jpg" alt="test" id="lady1">
+          <p id="lady1text" class="hide"><span class="lady">Margaret Hamilton</span>
+            <br> Director of Software
+            Engineering - NASA<br>
+            MIT Graduate
+          </p>
+        </div>
+
+        <div class="col-sm-4">
+          <img src="cm.jpg" alt="test" id="lady2">
+
+          <p id="lady2text" class="hide"><span class="lady">Cierra McDonald</span>
+            <br> Senior Program Manager - Xbox<br> Girls who Code Advocate</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="NN.jpg" alt="test" id="lady3">
+          <p id="lady3text" class="hide"><span class="lady">Neha Narkhede</span>
+            <br> Principal Software Engineer - LinkedIn<br>
+            Business Owner/CTO</p>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+  <section id="four" style="padding-top: 300px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2 id="p3">WHY <span id="not" class="hide">NOT</span> CODE?</h2>
+          <p class="content" style="max-width: 500px; word-spacing: 5px;">The computing field is blowing up. However, many young girls never answer the question "What do you want to be when you grow up?" with "I want to code!". The opportunities are
+            endless in the
+            technology field. If you to create, you can code. If you enjoy building, you can code. If you are fascinated by computers, you can code. Everyone can code and make a lot of money doing it. So why not try now?
+
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <div class="job">
+            You can be: <span id="changing">software developer</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>
